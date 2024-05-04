@@ -2,7 +2,7 @@
 ## VLSI design(SKY130)
 //............................................VLSI -CHIP Design document ...........................................................//
 
-### DAY-1:Introduction to open-source  EDA, OpenLANE and SKY130 PDK
+# DAY-1:Introduction to open-source  EDA, OpenLANE and SKY130 PDK
 
 ## 1.1.How to talk to computers
    
@@ -45,7 +45,10 @@ Compiler will generate the instructions by using Abstract Interface it is called
 ![alt text](https://github.com/shaikrajeena/Nasscom-Soc-VSD-Repo/assets/163321148/fcac5af1-0dbc-4bbe-aa66-4a5a1e00a4fb)
 
 
-##    1.2.SoC Design and OpenLane
+###    1.2.SoC Design and OpenLane
+
+
+
 
 
 
