@@ -49,7 +49,6 @@ Compiler will generate the instructions by using Abstract Interface it is called
 
 ### *_Introduction to all the components for digital ASIC design_:
  For designing ASIC we reuired so many elements.Mainly the below three required and shown in the below figure along with open source tools required for each category.
- 
                 1. RTL IP's 
                 2. EDA Tools
                 3. PDK Data
@@ -57,8 +56,7 @@ Compiler will generate the instructions by using Abstract Interface it is called
 ![alt text](https://github.com/shaikrajeena/Nasscom-Soc-VSD-Repo/assets/163321148/7da86cfd-294d-41f3-9074-36ca42807706)
 
 What is PDK ? PDK is nothing but process design kit which actually a interface between the FAB and the designers
-which includes collection files used to model a fabrication process for tge EDA tools used to design an IC. All those files may include the below elements
-        
+which includes collection files used to model a fabrication process for tge EDA tools used to design an IC. All those files may include the below elements        
          * Process design rules: DRC,LVS
          * Device models,digital standard cell binaries,I/O libraries
    
@@ -79,12 +77,10 @@ It converts RTL to a circuit out of components from standard cell library(SCL) r
  ![alt text](https://github.com/shaikrajeena/Nasscom-Soc-VSD-Repo/assets/163321148/8478723d-6a3d-48c9-a204-5e835d29933a)
 
  ### 2._Floor and power planning_:
- It needs to meet different things based on single(macros) component or whole chip. The main object is to plan silicon area and create robust power distribution to power the circuits. 
-         
+ It needs to meet different things based on single(macros) component or whole chip. The main object is to plan silicon area and create robust power distribution to power the circuits.          
+
           1. _Chip floor planning_: Partition the chip die between different systems building blocks and place the I/O pads as shown in the figures.
-         
           2. _Macro floor planning_: It allocates the dimensions, pin locations and rows definitions as shown in below figures
-          
           3. _power planning_: Power network constructed chip is powered by multiple VDDs and grounds(vss) and power pins are connected to multiple components by horizantal or vertical metal straps as shown in below figures to obtain low resistance.
 
 ![alt text](https://github.com/shaikrajeena/Nasscom-Soc-VSD-Repo/assets/163321148/ddc2920d-93d5-449f-ade0-33bb85a8aecf)
@@ -98,9 +94,8 @@ It converts RTL to a circuit out of components from standard cell library(SCL) r
 ### 3._Placement_:
 
 Place the cells on the floorplan rows,aligned with the sites to reduce interconnect delay. There 2 steps followed in placement as listed below,
-            
-            - Global Placement: Optimal positions for all cells which are not legal so cells may overlap
-            
+           
+            - Global Placement: Optimal positions for all cells which are not legal so cells may overlap       
             - Detailed Placement: Positions obtained are minimally altered to be legal
 
 ![alt text](https://github.com/shaikrajeena/Nasscom-Soc-VSD-Repo/assets/163321148/1706fe9f-6a39-4bc6-8e97-54c0708b8eb0)
@@ -118,7 +113,6 @@ Place the cells on the floorplan rows,aligned with the sites to reduce interconn
 Implement the interconnect using the available metal layers  with valid pattern. The metal layers used defined by the PDK which includes the pitch,tracks & minimum width and so many. It uses the divide and conquer approach for routing. two types are followed
         
          - Global routing: Generates routing guide
-        
          - Detailed routing: Uses the routing guide to implement
 
 ![alt text](https://github.com/shaikrajeena/Nasscom-Soc-VSD-Repo/assets/163321148/4247324a-a748-4892-acf8-492eef184fbf)
@@ -130,8 +124,41 @@ The last stage is signoff which mainly includes two parts
       - Physical verification : Where design rules(DRC)rechecked and Layout vs Schematic(LVS) will be rechecked.
       - Timing Verification : Static timing Analysis(STA)
 
+ ### _Introduction to OpenLANE and strive objects_:
 
-   
+ OpenLane which consists of APACHE 2.0 license.Started as an open-source flow for a true open source tape-out experiment.Strive is a family of open everything SOCs(Open PDK,Open EDA,Open RTL) The main goal of OpenLane is to produce a clean GDSII with no human intervention(no-human in the loop) Clean means NO LVS ,DRC Violations and no timing violations but the timing one is WIP(work in progress). The Strive family and the features and the sponsers is shown in below figure.
+
+ ![alt text](https://github.com/shaikrajeena/Nasscom-Soc-VSD-Repo/assets/163321148/2247cc32-5a6b-4708-8d9c-7657f063118a)
+
+  __OpenLane ASIC Flow__: 
+
+
+  OpenLane is tuned for skywafer 130nm it have open PDK and also supports XGAB180 & GFB0G .Can be used to harden macros and chips.
+  This will work in 2 modes ,
+
+           - Autonomous or Interactive
+           - Design space expkoration
+
+   OpenLane is based on several open source projects such as YOSYS,QFLOW,ABC,Fault,OpenRoad & many others. The below figure shows the ASIC flow of openLane.
+
+   ![alt text](https://github.com/shaikrajeena/Nasscom-Soc-VSD-Repo/assets/163321148/d98bff36-6ee9-4a53-808e-3f2b6e798194)
+
+
+The Design flow starts with RTL synthesis. RTL is fed to YOSYS with the design constraints.Yosys translates the RTL into logic circuits using generic components.The circuit can be optimized and then mapped into synthesis cells using ABC. Synthesis exploration used to genertae reports which are fed by synthesis strategy.It has design exploration tool used to sweep design configurations and genertae reports this is very useful to choose the best  design configuration among so many and also used for regression testing(CI).OpenLane ran on ~70 designs and compared the results to the best known ones. 
+
+After synthesis testing section will come using DFT(Design for test).Where scan insertion ,fault coverage & fault simulation will be done. and after that physical implementation as discussed in above section with different steps involved in simplified RTL design.
+
+As we can see in the OpenLane ASIC design flow figure shown in above  which involves optimization which involves (LEC) Logic equivalance checking using YOSYS.Everytime the netlist is modified and verification must be performed LEC. Which is used to formally confirm that the function did not change after modifying the netlists. During physical implementation openLane has special step i.e, __Fake ant Diodes insertion__ which will deal with antenna rules violations. When a metal wire segment is fabricated it can act as an antenna. By using OpenLane special feature this will be taken care as below instructions,
+
+          - Add antenna diode cell to leak away charges.
+          - Add a fake antenna diode next to every cell input after placement.
+          - Run the antenna checker(Magic) on the routed layout.
+          - If the checker reports a violation on the cell input pin ,replace the fake diode cell by a real one.
+
+#### 1.3. Get Familiar to Open-source EDA tools
+
+   ####  _OpenLane directory structure in detail_:
+
 
 
 
