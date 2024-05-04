@@ -49,9 +49,9 @@ Compiler will generate the instructions by using Abstract Interface it is called
 
 ### *_Introduction to all the components for digital ASIC design_:
  For designing ASIC we reuired so many elements.Mainly the below three required and shown in the below figure along with open source tools required for each category.
-             *  RTL IP's 
-             *  EDA Tools
-             *  PDK Data
+               - RTL IP's 
+               - EDA Tools
+               - PDK Data
 ![alt text](https://github.com/shaikrajeena/Nasscom-Soc-VSD-Repo/assets/163321148/7da86cfd-294d-41f3-9074-36ca42807706)
 
 What is PDK ? PDK is nothing but process design kit which actually a interface between the FAB and the designers
