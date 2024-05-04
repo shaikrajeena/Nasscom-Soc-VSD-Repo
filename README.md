@@ -1,4 +1,4 @@
-![image](https://github.com/shaikrajeena/Nasscom-Soc-VSD-Repo/assets/163321148/211dbf43-0749-45a1-9271-b1b7d84abdab)# Nasscom-Soc-VSD-Repo
+# Nasscom-Soc-VSD-Repo
 ## VLSI design(SKY130)
 //............................................VLSI -CHIP Design document ...........................................................//
 
@@ -49,9 +49,11 @@ Compiler will generate the instructions by using Abstract Interface it is called
 
 ### *_Introduction to all the components for digital ASIC design_:
  For designing ASIC we reuired so many elements.Mainly the below three required and shown in the below figure along with open source tools required for each category.
+ 
                 1. RTL IP's 
                 2. EDA Tools
                 3. PDK Data
+
 ![alt text](https://github.com/shaikrajeena/Nasscom-Soc-VSD-Repo/assets/163321148/7da86cfd-294d-41f3-9074-36ca42807706)
 
 What is PDK ? PDK is nothing but process design kit which actually a interface between the FAB and the designers
@@ -117,9 +119,6 @@ Implement the interconnect using the available metal layers  with valid pattern.
 The last stage is signoff which mainly includes two parts 
       - Physical verification : Where design rules(DRC)rechecked and Layout vs Schematic(LVS) will be rechecked.
       - Timing Verification : Static timing Analysis(STA)
-
-      
-)
 
 
    
