@@ -1,12 +1,10 @@
-# Nasscom-Soc-VSD-Repo
+![image](https://github.com/shaikrajeena/Nasscom-Soc-VSD-Repo/assets/163321148/adaeb49b-625f-4806-937c-b655ebb225c0)# Nasscom-Soc-VSD-Repo
 ## VLSI design(SKY130)
 //............................................VLSI -CHIP Design document ...........................................................//
 
-### <u>DAY-1</u>
+### DAY-1:Introduction to open-source  EDA, OpenLANE and SKY130 PDK
 
-**1.Introduction to open-source  EDA, OpenLANE and SKY130 PDK**
-
-##### 1.1	How to talk to computers
+## - 1.1.How to talk to computers
    
 * _Introduction to QFN-48 package_:
 
@@ -31,10 +29,23 @@ If we open the chip the main part it contains PADS. Through PADs we can send the
 ![alt text](https://github.com/shaikrajeena/Nasscom-Soc-VSD-Repo/assets/163321148/a71c472c-64bc-4958-8f42-1ecf0cccf267)
 
 * Introduction to RISC-V
+The user will write any simple code for example addition of two numbers it should be translated into assembly code when you are compiling. Then by using assembler the assembly language is again translated into the machine level language/Binary language (which includes only 0 &1) . Then those instructions will be passed through the interfaces like HDL (High level description language) to the layout as shown in the below diagram. That is how the program will be transferred from compiling stage to  GDS.
+![alt text](https://github.com/shaikrajeena/Nasscom-Soc-VSD-Repo/assets/163321148/d6d344de-fda1-4b44-8b96-f9e44a06e662)
+
+The below diagram shows how the applications will talk with the hardware. Applications will talk to the system software.which includes mainly OS,compiler & assembler. The main jobs of any OS(windows,linux..etc) are to handle the I/O operations and allocate memory for the instructions/tasks/applications and perform low level system functions. The ouput of the OS which main written in any programming language will be given to the compiler then compiler will generate the instructions based on the architecture it should be like Intel or ARM ..etc . Then those instructions will be given to the Assembler in the form of .exe file then assembler will convert those instructions into the machine level language which includes binary digits 0 & 1.
+
+![alt text](https://github.com/shaikrajeena/Nasscom-Soc-VSD-Repo/assets/163321148/1bf80f15-8843-4cb3-8589-fe6cf15a3b07)
+
+For example, if we take the application as stop watch the code is written in C language as per RISC-V architecture and those will be converted into the assembly language and then transferred to the hardware as shown in below diagram.
+
+![alt text](https://github.com/shaikrajeena/Nasscom-Soc-VSD-Repo/assets/163321148/4ffafb77-64ba-46be-8854-deed8ecc2b3c)
+
+Compiler will generate the instructions by using Abstract Interface it is called the ISA(Instruction Set Architecture). Assembler will convert the assembly code into machine level language then again by using the HDL(hardware description language) it will generate the Synthesized netlist of the RTL then physical design implementation will be created and passed to the hardware as shown in below diagram.
+
+![alt text](https://github.com/shaikrajeena/Nasscom-Soc-VSD-Repo/assets/163321148/fcac5af1-0dbc-4bbe-aa66-4a5a1e00a4fb)
 
 
-
-
+##    - SoC Design and OpenLane
 
 
 
