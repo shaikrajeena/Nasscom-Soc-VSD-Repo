@@ -1,4 +1,4 @@
-# Nasscom-Soc-VSD-Repo
+![image](https://github.com/shaikrajeena/Nasscom-Soc-VSD-Repo/assets/163321148/211dbf43-0749-45a1-9271-b1b7d84abdab)# Nasscom-Soc-VSD-Repo
 ## VLSI design(SKY130)
 //............................................VLSI -CHIP Design document ...........................................................//
 
@@ -49,9 +49,9 @@ Compiler will generate the instructions by using Abstract Interface it is called
 
 ### *_Introduction to all the components for digital ASIC design_:
  For designing ASIC we reuired so many elements.Mainly the below three required and shown in the below figure along with open source tools required for each category.
-               - RTL IP's 
-               - EDA Tools
-               - PDK Data
+                1. RTL IP's 
+                2. EDA Tools
+                3. PDK Data
 ![alt text](https://github.com/shaikrajeena/Nasscom-Soc-VSD-Repo/assets/163321148/7da86cfd-294d-41f3-9074-36ca42807706)
 
 What is PDK ? PDK is nothing but process design kit which actually a interface between the FAB and the designers
@@ -69,8 +69,58 @@ The main objective of ASIC design flow is RTL to GDSII.The simplified RTL flow i
 
 ![alt text](https://github.com/shaikrajeena/Nasscom-Soc-VSD-Repo/assets/163321148/488fb0db-6780-40c7-9d25-67086d1d5fd4)
 
-### *  Synthesis:
+###  1._Synthesis_:
+It converts RTL to a circuit out of components from standard cell library(SCL) resulted as gate level netlist. Standard cells have regular layout which may have different views and models.
+
+ ![alt text](https://github.com/shaikrajeena/Nasscom-Soc-VSD-Repo/assets/163321148/8478723d-6a3d-48c9-a204-5e835d29933a)
+
+ ### 2._Floor and power planning_:
+ It needs to meet different things based on single(macros) component or whole chip. The main object is to plan silicon area and create robust power distribution to power the circuits. 
+          1. _Chip floor planning_: Partition the chip die between different systems building blocks and place the I/O pads as shown in the figures.
+          2. _Macro floor planning_: It allocates the dimensions, pin locations and rows definitions as shown in below figures
+          3. _power planning_: Power network constructed chip is powered by multiple VDDs and grounds(vss) and power pins are connected to multiple components by horizantal or vertical metal straps as shown in below figures to obtain low resistance.
+
+![alt text](https://github.com/shaikrajeena/Nasscom-Soc-VSD-Repo/assets/163321148/ddc2920d-93d5-449f-ade0-33bb85a8aecf)
+
+
+![alt text](https://github.com/shaikrajeena/Nasscom-Soc-VSD-Repo/assets/163321148/1d3a2f75-f76a-43fd-9aea-6579dffdacb3)
+
+![alt text](https://github.com/shaikrajeena/Nasscom-Soc-VSD-Repo/assets/163321148/df0b7c6a-a68e-47c6-9c62-b0b50a480ce6)
+
+
+### 3._Placement_:
+
+Place the cells on the floorplan rows,aligned with the sites to reduce interconnect delay. There 2 steps followed in placement as listed below,
+            - Global Placement: Optimal positions for all cells which are not legal so cells may overlap
+            - Detailed Placement: Positions obtained are minimally altered to be legal
+
+![alt text](https://github.com/shaikrajeena/Nasscom-Soc-VSD-Repo/assets/163321148/1706fe9f-6a39-4bc6-8e97-54c0708b8eb0)
+
+![alt text](https://github.com/shaikrajeena/Nasscom-Soc-VSD-Repo/assets/163321148/64f03cb7-81be-4ccf-af21-d8dd65fdad9c)
+
+ ### 4._Clock Tree Synthesis_:
+
+ Before routing the signals we need to route the clocks. Thiis will create a clock distribution network as shown in below figure,Which needs to deliver the clock to all sequential elements(eg.Flipflops) with minimum skew(Zero is hard to achieve). Usually this network will be in good shape usually a tree shape.
+
+ ![alt text](https://github.com/shaikrajeena/Nasscom-Soc-VSD-Repo/assets/163321148/96a0fbc2-f811-4346-b7bd-8f085791be36)
+
+ ### 5._Route_:
+
+Implement the interconnect using the available metal layers  with valid pattern. The metal layers used defined by the PDK which includes the pitch,tracks & minimum width and so many. It uses the divide and conquer approach for routing. two types are followed
+         - Global routing: Generates routing guide
+         - Detailed routing: Uses the routing guide to implement
+
+![alt text](https://github.com/shaikrajeena/Nasscom-Soc-VSD-Repo/assets/163321148/4247324a-a748-4892-acf8-492eef184fbf)
+
+### 6._Sign Off_:
+
+The last stage is signoff which mainly includes two parts 
+      - Physical verification : Where design rules(DRC)rechecked and Layout vs Schematic(LVS) will be rechecked.
+      - Timing Verification : Static timing Analysis(STA)
+
       
+)
+
 
    
 
