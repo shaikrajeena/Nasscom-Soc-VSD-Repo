@@ -1,12 +1,12 @@
 # Nasscom-Soc-VSD-Repo
-##VLSI design(SKY130)
+## VLSI design(SKY130)
 //............................................VLSI -CHIP Design document ...........................................................//
 
-###DAY-1
+### DAY-1
 
 **Introduction to open-source  EDA, OpenLANE and SKY130 PDK**
 
-#####1.1	How to talk to computers
+##### 1.1	How to talk to computers
    
 * Introduction to QFN-48 package:
 
