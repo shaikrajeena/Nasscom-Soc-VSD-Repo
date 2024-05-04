@@ -49,9 +49,9 @@ Compiler will generate the instructions by using Abstract Interface it is called
 
 ### *_Introduction to all the components for digital ASIC design_:
  For designing ASIC we reuired so many elements.Mainly the below three required and shown in the below figure along with open source tools required for each category.
-             * RTL IP's 
-             * EDA Tools
-             * PDK Data
+             *  RTL IP's 
+             *  EDA Tools
+             *  PDK Data
 ![alt text](https://github.com/shaikrajeena/Nasscom-Soc-VSD-Repo/assets/163321148/7da86cfd-294d-41f3-9074-36ca42807706)
 
 What is PDK ? PDK is nothing but process design kit which actually a interface between the FAB and the designers
@@ -61,15 +61,15 @@ which includes collection files used to model a fabrication process for tge EDA 
    Google designed open source tool as "__SKY WAFER__" for PDK. The tool is desgined for 130nm chips. Which is similar to Intel:P4EE @3.4GHz processor.
    The RISC-V single cycle RV32I design with 327MHz also desinged by using sky wafer tool.The below figure shows the distribution of ICs with different technologies in 2019.
   
-   [!alt text](https://github.com/shaikrajeena/Nasscom-Soc-VSD-Repo/assets/163321148/1d383ac9-90a1-4fc1-83c1-f5fa8eecb3b8)
+   ![alt text](https://github.com/shaikrajeena/Nasscom-Soc-VSD-Repo/assets/163321148/1d383ac9-90a1-4fc1-83c1-f5fa8eecb3b8)
 
 ### *_ASIC-DESIGN FLOW_:
 
 The main objective of ASIC design flow is RTL to GDSII.The simplified RTL flow is illustrated in below figure,
 
-[!alt text](https://github.com/shaikrajeena/Nasscom-Soc-VSD-Repo/assets/163321148/488fb0db-6780-40c7-9d25-67086d1d5fd4)
+![alt text](https://github.com/shaikrajeena/Nasscom-Soc-VSD-Repo/assets/163321148/488fb0db-6780-40c7-9d25-67086d1d5fd4)
 
-### * Synthesis:
+### *  Synthesis:
       
 
    
