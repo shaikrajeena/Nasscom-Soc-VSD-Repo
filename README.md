@@ -1,12 +1,12 @@
-![image](https://github.com/shaikrajeena/Nasscom-Soc-VSD-Repo/assets/163321148/adaeb49b-625f-4806-937c-b655ebb225c0)# Nasscom-Soc-VSD-Repo
+# Nasscom-Soc-VSD-Repo
 ## VLSI design(SKY130)
 //............................................VLSI -CHIP Design document ...........................................................//
 
 ### DAY-1:Introduction to open-source  EDA, OpenLANE and SKY130 PDK
 
-## - 1.1.How to talk to computers
+## 1.1.How to talk to computers
    
-* _Introduction to QFN-48 package_:
+## * _Introduction to QFN-48 package_:
 
 Every board, every electronic circuitry or FPGA board will have the processors. For example, take the below board (ARDUINO).
 ![alt text](https://github.com/shaikrajeena/Nasscom-Soc-VSD-Repo/assets/163321148/5429022c-1cbb-4229-aa4c-047b023275cd)
@@ -28,7 +28,7 @@ If we open the chip the main part it contains PADS. Through PADs we can send the
 ![alt text](https://github.com/shaikrajeena/Nasscom-Soc-VSD-Repo/assets/163321148/0ad96f39-e745-49ad-99f7-0c79b027f770)
 ![alt text](https://github.com/shaikrajeena/Nasscom-Soc-VSD-Repo/assets/163321148/a71c472c-64bc-4958-8f42-1ecf0cccf267)
 
-* Introduction to RISC-V
+ ## *_Introduction to RISC-V_:
 The user will write any simple code for example addition of two numbers it should be translated into assembly code when you are compiling. Then by using assembler the assembly language is again translated into the machine level language/Binary language (which includes only 0 &1) . Then those instructions will be passed through the interfaces like HDL (High level description language) to the layout as shown in the below diagram. That is how the program will be transferred from compiling stage to  GDS.
 ![alt text](https://github.com/shaikrajeena/Nasscom-Soc-VSD-Repo/assets/163321148/d6d344de-fda1-4b44-8b96-f9e44a06e662)
 
@@ -45,7 +45,7 @@ Compiler will generate the instructions by using Abstract Interface it is called
 ![alt text](https://github.com/shaikrajeena/Nasscom-Soc-VSD-Repo/assets/163321148/fcac5af1-0dbc-4bbe-aa66-4a5a1e00a4fb)
 
 
-##    - SoC Design and OpenLane
+##    1.2.SoC Design and OpenLane
 
 
 
