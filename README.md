@@ -8,7 +8,7 @@
 
 ##### 1.1	How to talk to computers
    
-* Introduction to QFN-48 package:
+* _Introduction to QFN-48 package_:
 
 Every board, every electronic circuitry or FPGA board will have the processors. For example, take the below board (ARDUINO).
 
