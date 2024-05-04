@@ -58,8 +58,10 @@ Compiler will generate the instructions by using Abstract Interface it is called
 
 What is PDK ? PDK is nothing but process design kit which actually a interface between the FAB and the designers
 which includes collection files used to model a fabrication process for tge EDA tools used to design an IC. All those files may include the below elements
+        
          * Process design rules: DRC,LVS
          * Device models,digital standard cell binaries,I/O libraries
+   
    Google designed open source tool as "__SKY WAFER__" for PDK. The tool is desgined for 130nm chips. Which is similar to Intel:P4EE @3.4GHz processor.
    The RISC-V single cycle RV32I design with 327MHz also desinged by using sky wafer tool.The below figure shows the distribution of ICs with different technologies in 2019.
   
@@ -78,8 +80,11 @@ It converts RTL to a circuit out of components from standard cell library(SCL) r
 
  ### 2._Floor and power planning_:
  It needs to meet different things based on single(macros) component or whole chip. The main object is to plan silicon area and create robust power distribution to power the circuits. 
+         
           1. _Chip floor planning_: Partition the chip die between different systems building blocks and place the I/O pads as shown in the figures.
+         
           2. _Macro floor planning_: It allocates the dimensions, pin locations and rows definitions as shown in below figures
+          
           3. _power planning_: Power network constructed chip is powered by multiple VDDs and grounds(vss) and power pins are connected to multiple components by horizantal or vertical metal straps as shown in below figures to obtain low resistance.
 
 ![alt text](https://github.com/shaikrajeena/Nasscom-Soc-VSD-Repo/assets/163321148/ddc2920d-93d5-449f-ade0-33bb85a8aecf)
@@ -93,7 +98,9 @@ It converts RTL to a circuit out of components from standard cell library(SCL) r
 ### 3._Placement_:
 
 Place the cells on the floorplan rows,aligned with the sites to reduce interconnect delay. There 2 steps followed in placement as listed below,
+            
             - Global Placement: Optimal positions for all cells which are not legal so cells may overlap
+            
             - Detailed Placement: Positions obtained are minimally altered to be legal
 
 ![alt text](https://github.com/shaikrajeena/Nasscom-Soc-VSD-Repo/assets/163321148/1706fe9f-6a39-4bc6-8e97-54c0708b8eb0)
@@ -109,7 +116,9 @@ Place the cells on the floorplan rows,aligned with the sites to reduce interconn
  ### 5._Route_:
 
 Implement the interconnect using the available metal layers  with valid pattern. The metal layers used defined by the PDK which includes the pitch,tracks & minimum width and so many. It uses the divide and conquer approach for routing. two types are followed
+        
          - Global routing: Generates routing guide
+        
          - Detailed routing: Uses the routing guide to implement
 
 ![alt text](https://github.com/shaikrajeena/Nasscom-Soc-VSD-Repo/assets/163321148/4247324a-a748-4892-acf8-492eef184fbf)
@@ -117,6 +126,7 @@ Implement the interconnect using the available metal layers  with valid pattern.
 ### 6._Sign Off_:
 
 The last stage is signoff which mainly includes two parts 
+     
       - Physical verification : Where design rules(DRC)rechecked and Layout vs Schematic(LVS) will be rechecked.
       - Timing Verification : Static timing Analysis(STA)
 
