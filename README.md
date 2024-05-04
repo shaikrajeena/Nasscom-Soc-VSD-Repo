@@ -57,6 +57,7 @@ Compiler will generate the instructions by using Abstract Interface it is called
 
 What is PDK ? PDK is nothing but process design kit which actually a interface between the FAB and the designers
 which includes collection files used to model a fabrication process for tge EDA tools used to design an IC. All those files may include the below elements        
+        
          * Process design rules: DRC,LVS
          * Device models,digital standard cell binaries,I/O libraries
    
@@ -159,9 +160,54 @@ As we can see in the OpenLane ASIC design flow figure shown in above  which invo
 
    ####  _OpenLane directory structure in detail_:
 
+Actually OpenLane is not a tool its a flow which acts comprises of many open-source tools out there ex:Yosys. All these tools are inbined with OpenLane flow.This will have the complete RTL to GDSII flow.
+For more information about the OpenLane follow the below links,
+      1. [Github link](https://github.com/efabless/openlane2)
+      2. [Youtube Link](https://www.youtube.com/watch?v=Vhyv0eq_mLU)
+
+   OpenLane is having complete flow from RTL to GDSII . If we open the working directory we can observe the all the folders for each category.There are different PDK files will be available but we need to work on SKY130A PDK. Each PDK folder consists of two types of folders libs.ref & libs.tech folders. libs.ref folder mainly include specifications to the techbology where libs.tech folder include specifications of tools.
+
+Mainly we focus on __sky130_fd_sc_hd__ folder.If we see the abbrevation of the folder name fd means foundry ,SC means standard cell and HD means variant of PDK (which may be high density).
+
+### _Design Prepration steps_ _and_ _Review files after design prep and run synthesis_:
+
+Follow the below steps to open OpenLane and to run the synthesis.
+         
+         
+         - go to openlane directory
+         - Type--> docker(Then it will move to bash shell prompt)
+         -  Then type -->./flow.tcl -interactive( It will open the OpenLane)
+         -  After that type -->package require openlane 0.9(All the required files will be merged here)
+         - Then type --> prep -design picorv32a(Preparation will complete in this step)
+         - After that review the files by going into /picorv32a/<updated time folder>/runs/ folder
+         - Check temp file which consists of merged.lef file(which includes layer level & cell level information)
+         - Important file we need to check is config.tcl which will have all the default parameters information.
+         - Then type -->run_sythesis
+
+The below figures shows few of the important steps discussed in above section
+
+   ![alt text](https://github.com/shaikrajeena/Nasscom-Soc-VSD-Repo/assets/163321148/1a6cd348-a1b8-4755-965b-6d66372c49da)
+ 
+   ![alt text](https://github.com/shaikrajeena/Nasscom-Soc-VSD-Repo/assets/163321148/21ffcc8d-37a6-4152-84db-c871e33f8cc2)
+
+   ![alt text](https://github.com/shaikrajeena/Nasscom-Soc-VSD-Repo/assets/163321148/5ae645c9-bf41-4ca6-96a8-2d9407044827)
+
+   ![alt text](https://github.com/shaikrajeena/Nasscom-Soc-VSD-Repo/assets/163321148/e3580096-3cb6-429b-9b96-718e4df38d8c)
+   
+
+### _First Task is to calculate the flop Ratio_:
+
+![alt text](https://github.com/shaikrajeena/Nasscom-Soc-VSD-Repo/assets/163321148/ac9d4de5-0b24-4bab-8bc6-109c96b99476)
+
+![alt text](https://github.com/shaikrajeena/Nasscom-Soc-VSD-Repo/assets/163321148/c26251f1-fcb1-481d-85d6-df4963aab00d)
 
 
+   - Number of D-filipflops : 1613
+   - Number of cells        :14876
 
+The total flop ratio = Number of D-flipflops / Number of cells = 1613/14876 = 0.108429.. * 100 = 10.842 %
+
+ ### _Flop Ratio is 10.842%_  
 
 
 
