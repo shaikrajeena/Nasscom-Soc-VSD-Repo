@@ -2,7 +2,7 @@
 ## VLSI design(SKY130)
 //............................................VLSI -CHIP Design document ...........................................................//
 
-### <u>DAY-1
+### **DAY-1**
 
 **1.Introduction to open-source  EDA, OpenLANE and SKY130 PDK**
 
