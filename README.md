@@ -211,11 +211,11 @@ The total flop ratio = Number of D-flipflops / Number of cells = 1613/14876 = 0.
  ### _Flop Ratio is 10.842%_  
 
 
-#### /////////////****DAY-2***//////////////////: Good floorplan vs bad floorplan and introduction to library cells
+ # /////////////DAY-2//////////////////: Good floorplan vs bad floorplan and introduction to library cells
 
-#### _2.1.Chip floor planning considerations_:
+## _2.1.Chip floor planning considerations_:
 
-#### _Utilization factor and aspect ratio_:
+### _Utilization factor and aspect ratio_:
 In physical design the first step is to come up with width and height of the chip. Lets just begin with by taking the basic netlist as shown in the below figure
 
 ![alt text](https://github.com/shaikrajeena/Nasscom-Soc-VSD-Repo/assets/163321148/2f2c4035-034e-493a-9043-09f204c067d1)
@@ -242,7 +242,7 @@ So we need to place the netlist into the core . What is core & die ? 'Core' is t
 
    Aspect Ratio = Height/Width = 2/2=1 --> chip is Square  if aspect ratio other than 1 then chip is rectangular shape.
 
-#### _Concept of preplaced cells_:
+### _Concept of preplaced cells_:
 
 First of all let us know what are preplaced cells? One Huge circuit is divided into parts as shown in below figure,
 
@@ -260,7 +260,7 @@ These IPs/blocks have user defined locations and hence are placed in chip before
 
 For example we have blocks as blocka & block b & block c .so how do how do we defined the locations of pre placed cells? All the blocks placed close to the input side  but it is dependent on the design background the example is shown in the above figure. But the locations of the preplaced cells not touched while go on the design cycle.
 
-#### _De-Coupling Capacitor_:
+### _De-Coupling Capacitor_:
 Consider the amount of the switching current required for a complex something like shown in below figure,
 
 ![alt text](https://github.com/shaikrajeena/Nasscom-Soc-VSD-Repo/assets/163321148/6f194c0d-bcc9-4f6e-b400-8d092013c857)
@@ -284,7 +284,7 @@ So the decoupling capacitor will have the same voltage as like power supply so t
 ![alt text](https://github.com/shaikrajeena/Nasscom-Soc-VSD-Repo/assets/163321148/159670cc-3dad-4916-b7f7-b88ff206d2df)
 
 
-#### _Power Planning_:
+### _Power Planning_:
 
 Before going to power planning first we need to take care of the local communications.for example lets take one macro will be used repeatedly so there will be particular demand like current is needed for each and every cell of the macro. For example as shown in below figure we have 4 macros used assume one macro is driver other is load.there is a signal given to the load from the driver.(The signal is logic-0 to logic-1) we need to maintain the same signal so that the load receives same signal but problem ariase. Observe the below figure,the red signal dont have de-coupled capacitor the power supply has to supply the current but it is very far from the signal so there will be multiple voltage drops.
 
@@ -307,7 +307,7 @@ All these problems are coming just we are using only one power supply the sollut
 ![alt text](https://github.com/shaikrajeena/Nasscom-Soc-VSD-Repo/assets/163321148/bfe306b8-ba0e-43c2-a562-4dac911e55b9)
 
 
-#### _Pin placement and logical cell placement blockage_:
+### _Pin placement and logical cell placement blockage_:
 
 Lets take the below design for example that needs to implemented there 4 different colours of designs which will be attached with the pre-placed cells as shown in the below diagram,
 
