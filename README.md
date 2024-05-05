@@ -321,6 +321,29 @@ Lets take the below design for example that needs to implemented there 4 differe
 
  ![alt text](https://github.com/shaikrajeena/Nasscom-Soc-VSD-Repo/assets/163321148/281606ef-028d-40ea-95e0-979d0c8ff678)
 
+ Below are the figures from openLane for floor planning practice.
+
+ ![alt text](https://github.com/shaikrajeena/Nasscom-Soc-VSD-Repo/assets/163321148/ca95e063-6ffb-42a6-b6dd-e5d6ef244d20)
+
+ ![alt text](https://github.com/shaikrajeena/Nasscom-Soc-VSD-Repo/assets/163321148/e549bb3e-4d11-40df-bcc3-1563d8926c35)
+
+#### 2.2.Library binding & placement:
+
+#### _Netlist binding and initial place design_:
+
+The important step is in placement and routing to bind the netlist into physical cells. The exact meaning is for example we take the below figure netlist with all the gates and the shape of those gates represents the functionality of the gate but in reality we dont have like OR gate shape.we have shapes something like box with height and widths.
+
+![alt text](https://github.com/shaikrajeena/Nasscom-Soc-VSD-Repo/assets/163321148/c05eb336-8fce-48a7-ac48-49d98051f59f)
+
+The below rectified figure will present in shelf .shelf is called as library.Library not only having all the boxes but also timing information of particular cells.Library classified into 2-types.1-consists of shapes and cells and one might consists of delay information. Library will have height and width of the each and every cell and delay information of each and every cell and delay information of each and every cell plus required condition of particular cell for example at what condition FF emits the output along with all these it also has various shapes of the cells with various flavours of same cells as shown in below figure.
+
+![alt text](https://github.com/shaikrajeena/Nasscom-Soc-VSD-Repo/assets/163321148/b5fb5dfc-2816-4733-885b-9191605794b1)
+
+
+
+
+ 
+
  
 
  
