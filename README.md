@@ -2,7 +2,7 @@
 ## VLSI design(SKY130)
 //............................................VLSI -CHIP Design document ...........................................................//
 
-# DAY-1:Introduction to open-source  EDA, OpenLANE and SKY130 PDK
+# /////////////****DAY-1***////////////////// :Introduction to open-source  EDA, OpenLANE and SKY130 PDK
 
 ## 1.1.How to talk to computers
    
@@ -125,6 +125,7 @@ The last stage is signoff which mainly includes two parts
       - Physical verification : Where design rules(DRC)rechecked and Layout vs Schematic(LVS) will be rechecked.
       - Timing Verification : Static timing Analysis(STA)
 
+
  ### _Introduction to OpenLANE and strive objects_:
 
  OpenLane which consists of APACHE 2.0 license.Started as an open-source flow for a true open source tape-out experiment.Strive is a family of open everything SOCs(Open PDK,Open EDA,Open RTL) The main goal of OpenLane is to produce a clean GDSII with no human intervention(no-human in the loop) Clean means NO LVS ,DRC Violations and no timing violations but the timing one is WIP(work in progress). The Strive family and the features and the sponsers is shown in below figure.
@@ -208,6 +209,123 @@ The below figures shows few of the important steps discussed in above section
 The total flop ratio = Number of D-flipflops / Number of cells = 1613/14876 = 0.108429.. * 100 = 10.842 %
 
  ### _Flop Ratio is 10.842%_  
+
+
+#### /////////////****DAY-2***//////////////////: Good floorplan vs bad floorplan and introduction to library cells
+
+#### _2.1.Chip floor planning considerations_:
+
+#### _Utilization factor and aspect ratio_:
+In physical design the first step is to come up with width and height of the chip. Lets just begin with by taking the basic netlist as shown in the below figure
+
+![alt text](https://github.com/shaikrajeena/Nasscom-Soc-VSD-Repo/assets/163321148/2f2c4035-034e-493a-9043-09f204c067d1)
+
+![alt text](https://github.com/shaikrajeena/Nasscom-Soc-VSD-Repo/assets/163321148/de6bc996-f9e8-4eda-9eb7-646da6b9c34f)
+
+Basic netlist is using 2 flipflops(1-Launch FF & 1-Capture FF) and we have simple combinational logic between them. A netlist describes the connectivity of an electronic design.Mostly it will depend on the dimensions of the logic gates and FFs. Lets convert the highlighted symbols into physical dimensions/mostly interested in dimensions of the standard cells not the wires as shown in the below figure.
+
+![alt text](https://github.com/shaikrajeena/Nasscom-Soc-VSD-Repo/assets/163321148/1d01e8f0-7a5e-4a58-8e23-38bdbff07ad8)
+
+For example, if we consider the height and width are 1 unit & 1 unit as shown in below figure, Then for one standard cell the area will be 1 sq.unit and the area for the flipflops also 1 sq.unit. Now lets calculate the area occupied by the below netlist on a silicon wafer.Remove the wires and place them beside each other as shown in the below figure.
+
+![alt text](https://github.com/shaikrajeena/Nasscom-Soc-VSD-Repo/assets/163321148/29ddfd57-5d6b-4e1b-8f31-38fc79b65114)
+
+![alt text](https://github.com/shaikrajeena/Nasscom-Soc-VSD-Repo/assets/163321148/5ba058b9-1e1f-4fef-93c5-42fa6c6233ce)
+
+So we need to place the netlist into the core . What is core & die ? 'Core' is the section of the chip where the fundamental logic of the design is placed. A 'die' which consists of core is small semiconductoe material specimen on which the fundamental circuit is fabricated. Okay now how to arrive on its dimensions? Place all logical cells inside the core as shown in figure. The logical cells occupies the complete area of the core as shown in fugure it is called 100% utilization of the core so if we want to add any extra cell it is not possible so always 50 or 60 % of the core will be utilized. If we want to calculate the utilization factor the formula is shown below,
+
+![alt text](https://github.com/shaikrajeena/Nasscom-Soc-VSD-Repo/assets/163321148/197e39b8-d95c-4ccd-9235-f6dbc8fabed8)
+
+   Utilization factor = Area occupied by netlist / Total area of the core  
+
+   If we calculate the above diagram utilization factor , 4*1sq.unit /2*2 sq.unit = 1 = 100%
+
+   Aspect Ratio = Height/Width = 2/2=1 --> chip is Square  if aspect ratio other than 1 then chip is rectangular shape.
+
+#### _Concept of preplaced cells_:
+
+First of all let us know what are preplaced cells? One Huge circuit is divided into parts as shown in below figure,
+
+![alt text](https://github.com/shaikrajeena/Nasscom-Soc-VSD-Repo/assets/163321148/024caf9c-f43a-4568-a25b-312f51b9c532)
+
+The divided parts treated as blocks then extend the IO pins after that black box the boxes which means the netlist will be invisible to the top netlist as shown in the below figure, Those blocks will be implemented seperately so that we can use those blocks repeatedly.Similarly there are other IPs available like memory,Comparator,Multiplexer,Clock gating cell and many other.Theier functionality will be implemented once and used repeatedly.These blocks placement has to be done before routing. These are called the pre placed cells.The arrangement of these IPs in a chip is referred as floorplanning.
+
+![alt text](https://github.com/shaikrajeena/Nasscom-Soc-VSD-Repo/assets/163321148/09cbcdc4-3de0-4a50-9229-e0091a0e37fd)
+
+![alt text](https://github.com/shaikrajeena/Nasscom-Soc-VSD-Repo/assets/163321148/813b8b5e-177f-448a-b0e0-52a534c7180a)
+
+These IPs/blocks have user defined locations and hence are placed in chip before automated placement and routing are called pre placed cells .automated placement and routing tools places the remaining logical cells in the design onto the chip.
+
+![alt text](https://github.com/shaikrajeena/Nasscom-Soc-VSD-Repo/assets/163321148/578eb8e4-341f-4866-9401-4a1ee5766d3d)
+
+For example we have blocks as blocka & block b & block c .so how do how do we defined the locations of pre placed cells? All the blocks placed close to the input side  but it is dependent on the design background the example is shown in the above figure. But the locations of the preplaced cells not touched while go on the design cycle.
+
+#### _De-Coupling Capacitor_:
+Consider the amount of the switching current required for a complex something like shown in below figure,
+
+![alt text](https://github.com/shaikrajeena/Nasscom-Soc-VSD-Repo/assets/163321148/6f194c0d-bcc9-4f6e-b400-8d092013c857)
+
+    1. Consider capacitance to be zero for the discussiob Rdd,Rss,Ldd,Lss are well defined values.
+    2. During switching operation,the circuit demands switching current that is,peak current(Ipeak)
+    3. Now due to the presence of Rdd & Ldd there will be a voltage drop across them and the voltage at node 'A' would be Vdd' instead Vdd.
+
+Whenever AND/OR gate switches from logic-0 to logic-1 it needs current. Basically small capacitance needs to charge to represent logic 1. The amount of charge will be sent by the supply voltage .Also whenever switching from logic 1 to logic 0 responsibility of the VSS to take that amount of the charge.
+But in reality from power supply voltage will flow to the circuit.There is a drop in wire becuase those wires are physical wires which will have physical dimensions(Means they have resistance ,inductance & Capacitance).So multiple voltage drops will be there .so exact voltage required for the transition wont occur.
+If Vdd goes below the noise margin,due to Rdd & Ldd the logic-1 at the output of the circuit won't be detected as logic-1 at the input of the circuit following the circuit. The noise margin figure is shown in below,
+
+![alt text](https://github.com/shaikrajeena/Nasscom-Soc-VSD-Repo/assets/163321148/697c7ddf-798c-4695-841d-79bf7f08ca11)
+
+We can avoid these noise margins issue by adding decoupling capacitors as shown in below figure.
+
+![alt text](https://github.com/shaikrajeena/Nasscom-Soc-VSD-Repo/assets/163321148/845a75f5-6bbd-4405-b0a1-ed0d2f72e3ae)
+
+So the decoupling capacitor will have the same voltage as like power supply so there wont be voltage drops.surround all the pre-placed cells with decoupling capacitors as shown in below figure,
+
+![alt text](https://github.com/shaikrajeena/Nasscom-Soc-VSD-Repo/assets/163321148/159670cc-3dad-4916-b7f7-b88ff206d2df)
+
+
+#### _Power Planning_:
+
+Before going to power planning first we need to take care of the local communications.for example lets take one macro will be used repeatedly so there will be particular demand like current is needed for each and every cell of the macro. For example as shown in below figure we have 4 macros used assume one macro is driver other is load.there is a signal given to the load from the driver.(The signal is logic-0 to logic-1) we need to maintain the same signal so that the load receives same signal but problem ariase. Observe the below figure,the red signal dont have de-coupled capacitor the power supply has to supply the current but it is very far from the signal so there will be multiple voltage drops.
+
+![alt text](https://github.com/shaikrajeena/Nasscom-Soc-VSD-Repo/assets/163321148/e920d3bb-dcc7-4c17-8c1d-f43fbaf00b78)
+
+Just consider the below figure, This means all the capacitors which were charged to 'V' volts will have to discharge to '0' volts,through single ground tap point.This will cause a bump in ground tap point as shown in the figure.The size of the ground bounce exceeds the noise margin it might enter into undefined state.
+
+![alt text](https://github.com/shaikrajeena/Nasscom-Soc-VSD-Repo/assets/163321148/8d338a9a-bd39-4ead-9092-4c4ad971f926)
+
+![alt text](https://github.com/shaikrajeena/Nasscom-Soc-VSD-Repo/assets/163321148/c0197b34-3716-4b49-b91d-37fd5438357d)
+
+If all the capacitors  charge from logic 0 to logic 1 as shown in below figure voltage droop will occur. 
+
+![alt text](https://github.com/shaikrajeena/Nasscom-Soc-VSD-Repo/assets/163321148/34184950-a95f-4482-bbfb-b53b9e36ddf7)
+
+All these problems are coming just we are using only one power supply the sollution is to keep multiple power supplies as shown in the below figure there wont be voltage drops.
+
+![alt text](https://github.com/shaikrajeena/Nasscom-Soc-VSD-Repo/assets/163321148/48bcfdab-dc6f-49b6-b919-918e292ffd90)
+
+![alt text](https://github.com/shaikrajeena/Nasscom-Soc-VSD-Repo/assets/163321148/bfe306b8-ba0e-43c2-a562-4dac911e55b9)
+
+
+#### _Pin placement and logical cell placement blockage_:
+
+Lets take the below design for example that needs to implemented there 4 different colours of designs which will be attached with the pre-placed cells as shown in the below diagram,
+
+![alt text](https://github.com/shaikrajeena/Nasscom-Soc-VSD-Repo/assets/163321148/3833c1c9-41a0-4311-b292-78b76a529eff)
+ 
+ so we have all the inputs and ouputs as shown in the above figure. Pin placement of the input and output ports will be based on designer perspective but for the below example inputs are placed in left side of the chip and outputs are placed in right side of the chip.
+
+ ![alt text](https://github.com/shaikrajeena/Nasscom-Soc-VSD-Repo/assets/163321148/f85f9c15-9150-4c68-b9b2-85a0e3618819)
+
+ After that logic cell blockage will be added as shown in the below figure.
+
+ ![alt text](https://github.com/shaikrajeena/Nasscom-Soc-VSD-Repo/assets/163321148/281606ef-028d-40ea-95e0-979d0c8ff678)
+
+ 
+
+ 
+
+
 
 
 
