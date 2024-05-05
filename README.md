@@ -351,6 +351,146 @@ Problems of placement will be solved by using optimization. This is the stage wh
 
 ![alt text](https://github.com/shaikrajeena/Nasscom-Soc-VSD-Repo/assets/163321148/dbc0a1bd-d9bc-41cd-b408-dfa7783da77a)
 
+### _Need for libraries and characterization_:
+
+_Library characterization and modelling_ Here part-1 is the concept and theory. where we can do the NLDM,CLS timing,power and noise characterization. First step is logic synthesis, First we have a functionality coded in RTL.Convert the functionality into a legal Hardware is called logic synthesis.Output of the logic synthesis is arrangement of the gates that will represent original functionality described in RTL code. Next is floor planning and then placement and then clock tree synthesis(CTS) then the second last step is routing. at last we do static timing analysis(STA) its the last sign off step as shown in the below figure. but in all these steps one common thing is gates and cells.
+
+![alt text](https://github.com/shaikrajeena/Nasscom-Soc-VSD-Repo/assets/163321148/28eec548-1e2e-44f4-8fda-56ef499d5b70)
+
+![alt text](https://github.com/shaikrajeena/Nasscom-Soc-VSD-Repo/assets/163321148/0a606bf6-1130-49f7-befc-81abf2f65e34)
+
+ In OpenLane placement is after synthesis,there are two types of placements one is global level placement and detialed level placement tools are different for both the placements. We need to do the placements like the way there should be no overlap. Run the below command in OpenLane and by using _MAGIC_ tool we can see the placement as shown in below figure,  
+
+    -->run-placement
+
+![alt text](https://github.com/shaikrajeena/Nasscom-Soc-VSD-Repo/assets/163321148/fb948c75-2ca2-4466-87e9-6b0f2e95bee5)
+
+Power distribution network gets created in floor plan itself but in OpenLane it is different it wont create in power distribution post that floor plan before routing we do.
+
+#### 2.3. Cell Design and characterization flows
+
+##### _Inputs for cell design flow_:
+
+Placement and routed of the logic synthesis flow is shown in below figure,
+
+![alt text](https://github.com/shaikrajeena/Nasscom-Soc-VSD-Repo/assets/163321148/7dd00eec-b9b8-44e0-9f2c-9eb9e3c07764)
+
+![alt text](https://github.com/shaikrajeena/Nasscom-Soc-VSD-Repo/assets/163321148/804dbf7d-cb9a-4e92-95a8-1a42a12d02bb)
+
+As shown in above figure the highlighted standard cells are most important in IC design flow. Those are buffer or FF or inverters.Standard cell is placed in a section called library.In library has got different functionality as well different sizes and flavours as well.
+
+#### _Cell Design Flow_:
+
+![alt text](https://github.com/shaikrajeena/Nasscom-Soc-VSD-Repo/assets/163321148/b0bd168e-d71f-41d8-a52a-467815ff8d9e)
+
+As shown in above figure lets take inverter as a basic cell. Though it is single input cell but for an IC design flow it has alot more to do. Cell design flow mainly include 3 steps,those are listed below as well highlighted in above figure.
+
+         1. Inputs
+         2. Design Steps
+         3.Outputs
+
+ _1.Inputs_:  Called as process design kits(PDKs) will be get by Foundry that will include DRC & LVS rules,SPICE models,Library and user defined specs.DRC is typically rules has to be follow example is illustrated in below figures, Coming to SPICE models it consists of threshold values of voltage and current and lot more . 
+
+![alt text](https://github.com/shaikrajeena/Nasscom-Soc-VSD-Repo/assets/163321148/cd04f0fe-0752-41de-a642-d8cf84bc9f96)
+
+![alt text](https://github.com/shaikrajeena/Nasscom-Soc-VSD-Repo/assets/163321148/f1212b24-015f-4518-890b-5ec4da229721)
+
+For example as a user defined specification  if we take one circuit outputs cell height is defined by the seperation of the power and ground and cell width is depends on the timing information.another example is supply voltage as illustrated in below figures,
+
+ ![alt text](https://github.com/shaikrajeena/Nasscom-Soc-VSD-Repo/assets/163321148/1a259c93-2509-4a38-898f-d58c27b1eafc)
+
+ ![alt text](https://github.com/shaikrajeena/Nasscom-Soc-VSD-Repo/assets/163321148/3e3a0f41-4eca-43de-a48f-f02eab42b364)
+
+  2._Design Steps_: There are 3 steps in the design steps those are listed below,
+
+        1. Circuit design
+        2. Layout design
+        3.Characterization
+
+   All the 3 steps are illustrated in below figures,
+
+   ![alt text](https://github.com/shaikrajeena/Nasscom-Soc-VSD-Repo/assets/163321148/70fca011-7b63-4b4f-85eb-acadfc4d962a)
+
+   ![alt text](https://github.com/shaikrajeena/Nasscom-Soc-VSD-Repo/assets/163321148/56e6a0fb-8c72-4ee1-a2f2-53ef84f89c38)
+
+   ![alt text](https://github.com/shaikrajeena/Nasscom-Soc-VSD-Repo/assets/163321148/e3ecbfa0-6a86-4c51-8012-18c4f61603f7)
+
+   ![alt text](https://github.com/shaikrajeena/Nasscom-Soc-VSD-Repo/assets/163321148/2301f60b-3920-40d0-a272-fb1973af96d1)
+
+   ![alt text](https://github.com/shaikrajeena/Nasscom-Soc-VSD-Repo/assets/163321148/41391567-70b4-4c98-969a-522ecec2ffb3)
+
+    In layout design we need to get the Euler's path traced only once as shown in the above figure.Based on Euler's path need to draw stick diagram as shown in the above figure. Then convert stick digaram into a layout while we adhere to all the DRC,LVS rules and also user defined specifications. By using "_Magic Tool_" we can able to see the layout. Then the final step is to extract the paracitics out od the layout and characterization interms of timing. The output of the circuit design is CDL(circuit description language) and the output of the layout is GDSII(Typical layout file),LEF(Widht & height of cell),Extracted spice netlist(.cir)
+
+   3._Characterization_: Where the outputs are timing,noise,power .libs and functions
+
+![alt text](https://github.com/shaikrajeena/Nasscom-Soc-VSD-Repo/assets/163321148/e06208f1-3c46-40d3-80b5-10f626c6f9d2)
+
+
+#### _Typical Charactarization flow_:
+
+ For charactarization we need to follow certain steps those are listed below,
+    
+     1. Read the model Files
+     2. Read the extracted spice netlists
+     3.Recognize the behaviour of the buffer
+     4.Read the sub circuits of the inverter(As we are taking inverter as an example)
+     5.Attach the necessary power sources
+     6.Apply the stimulus(There are different stimulus types available)
+     7.Provide necessary output capacitances
+     8.Necessary simulation command
+
+All these steps are illustrated and highlighted with the numbers in the below figures, Then the next step is to feed in all these inputs from 1-8 steps in the form of the configuration file into a characterization software called GUNA  this also highlighted in the below figure.
+
+![alt text](https://github.com/shaikrajeena/Nasscom-Soc-VSD-Repo/assets/163321148/e43422cd-6ff4-4061-9fe4-07a8671c472b)
+
+![alt text](https://github.com/shaikrajeena/Nasscom-Soc-VSD-Repo/assets/163321148/5cca94c3-bde6-4916-8fb9-a665bae61fe5)
+
+![alt text](https://github.com/shaikrajeena/Nasscom-Soc-VSD-Repo/assets/163321148/a55e928f-6dcb-4015-95bd-58d90cb93074)
+
+#### 2.4 General Timing Characterization parameters:
+
+ #### _Timing threshold definitions_:
+
+As discussed above in the 6th step where we will apply the stimulus there are various timings we need to follow those are called timing threshold definitions as shown in the below figure,
+
+![alt text](https://github.com/shaikrajeena/Nasscom-Soc-VSD-Repo/assets/163321148/be882e10-6059-4346-a08b-8661f9b02cf2)
+
+All these definitions are important, we see the one of the parameter as slew low rise threshold taken the waveforms from the output of the 1st inverter wheich is given to the second Flipflop input which is close to zero power supply. as shown in the below figures only few are listed.
+
+![alt text](https://github.com/shaikrajeena/Nasscom-Soc-VSD-Repo/assets/163321148/fffde4b9-9aff-4cc8-b663-0a3e86057161)
+ 
+ ![alt text](https://github.com/shaikrajeena/Nasscom-Soc-VSD-Repo/assets/163321148/0f87374f-8853-418d-a808-6e92e2f87008)
+
+
+ #### _Propagation Delay_: 
+  It is very easy to obtain but if  we cannot taken care it may lead to unexpected reasons. As shown in the below figure if we have both input and output rise and fall threshold for propagation delay we just need to subtract from  "_out-in_"
+
+![alt text](https://github.com/shaikrajeena/Nasscom-Soc-VSD-Repo/assets/163321148/f4b989f4-5acf-4728-a002-ea04c44b0778)
+
+![alt text](https://github.com/shaikrajeena/Nasscom-Soc-VSD-Repo/assets/163321148/f752dc98-8922-4b1a-9ecd-e57787c96bc3)
+
+The below figures shows the timing characterization for transition time 
+
+![alt text](https://github.com/shaikrajeena/Nasscom-Soc-VSD-Repo/assets/163321148/1686d1cb-2ed7-44a0-ab76-e6068ff39d7b)
+
+![alt text](https://github.com/shaikrajeena/Nasscom-Soc-VSD-Repo/assets/163321148/b31414ee-21fe-46cc-9a60-f9ea336b4adc)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
  
