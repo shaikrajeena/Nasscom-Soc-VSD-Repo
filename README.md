@@ -2,7 +2,7 @@
 ## VLSI design(SKY130)
 //............................................VLSI -CHIP Design document ...........................................................//
 
-# /////////////****DAY-1***////////////////// :Introduction to open-source  EDA, OpenLANE and SKY130 PDK
+# /////////////DAY-1////////////////// :Introduction to open-source  EDA, OpenLANE and SKY130 PDK
 
 ## 1.1.How to talk to computers
    
@@ -339,6 +339,17 @@ The below rectified figure will present in shelf .shelf is called as library.Lib
 
 ![alt text](https://github.com/shaikrajeena/Nasscom-Soc-VSD-Repo/assets/163321148/b5fb5dfc-2816-4733-885b-9191605794b1)
 
+The next step is placement .we have well defined floorplan as shown in below figure,is to place the netlist into the floorplan.Placement step should not touch the pre-placed cell area.By seeing the netlist which ever cell is close to input or output accordingly place those cells inside the floorplan.as hsown in below figure.
+
+![alt text](https://github.com/shaikrajeena/Nasscom-Soc-VSD-Repo/assets/163321148/6527f9f3-e81e-4a62-a38b-a551b7f50e29)
+
+![alt text](https://github.com/shaikrajeena/Nasscom-Soc-VSD-Repo/assets/163321148/24437587-c484-4e65-9eb1-89c4b9a0f700)
+
+#### _Optimize placement using estimated wire-length and capacitance_:
+
+Problems of placement will be solved by using optimization. This is the stage where we estimate wire lenght and capacitance and based on that insert repeaters.We use the signal integrety concept here.To maintain the signal integrety we need someone at the intermediate steps to reproduce the things that is the concept of repeaters.actually repeaters are buffers that will recondition your original signal make a new signal and which replicate the original signal and send it again but loss of area but we need to retain. based on the frequency,specifications setup timing analysis placement is correct or not we need to check.
+
+![alt text](https://github.com/shaikrajeena/Nasscom-Soc-VSD-Repo/assets/163321148/dbc0a1bd-d9bc-41cd-b408-dfa7783da77a)
 
 
 
