@@ -489,6 +489,143 @@ Then if we want to change the other IO strategies just go to configurations file
          -->run_floorplan
 ### _SPICE Deck creation for CMOS inverter_:
 
+Take inverter as an example and shown in the below figure ,
+
+![alt text](https://github.com/shaikrajeena/Nasscom-Soc-VSD-Repo/assets/163321148/43714a93-4161-475d-a4a7-7f8e59ce1319)
+
+Befor entering into the spice simulations we need to create the SPICE deck.the below steps we need to follow
+   1. Componenet connectivity basically a netlist
+   2. Complete deck for whole netlist
+   3. component value(output load)
+   4. Identify "nodes"
+   5. Name the "nodes"
+As shown in below figures,
+
+![alt text](https://github.com/shaikrajeena/Nasscom-Soc-VSD-Repo/assets/163321148/0d26c5ae-a64e-4638-a281-27ae9d4c20da)
+
+![alt text](https://github.com/shaikrajeena/Nasscom-Soc-VSD-Repo/assets/163321148/de0ecb37-2358-4b65-8666-3f3eeeb7db46)
+
+Then we need to write the below shown program for the SPICE deck,
+![alt text](https://github.com/shaikrajeena/Nasscom-Soc-VSD-Repo/assets/163321148/6dc936c7-16c9-4e24-9f75-8bd2bc0278fb)
+
+![alt text](https://github.com/shaikrajeena/Nasscom-Soc-VSD-Repo/assets/163321148/9911198f-d9b0-4eba-b924-4e86dd5d7c99)
+
+![alt text](https://github.com/shaikrajeena/Nasscom-Soc-VSD-Repo/assets/163321148/6e6944c3-c38c-4332-8847-e5c2c8e44e91)
+
+![alt text](https://github.com/shaikrajeena/Nasscom-Soc-VSD-Repo/assets/163321148/b0be0c10-dc8d-4ae2-892a-f79bf05aa310)
+
+### _SPICE simulation lab for simulation_:
+as shown in the above figures we need to write the program as per pmos and nmos parameters,and simulation commands we need to give then we need to execute and shown in the below figures,
+
+M1 OUT   IN     VDD     VDD  CONNECTIVITY
+ drain   gate  subtrate source
+
+ ![alt text](https://github.com/shaikrajeena/Nasscom-Soc-VSD-Repo/assets/163321148/c6eabd65-3e02-4e97-af4b-970c4b3a1dd5)
+
+ ![alt text](https://github.com/shaikrajeena/Nasscom-Soc-VSD-Repo/assets/163321148/cb74e27a-42bf-4a55-b0ff-8ac752a382bc)
+
+ ![alt text](https://github.com/shaikrajeena/Nasscom-Soc-VSD-Repo/assets/163321148/42d27b02-141b-46be-8f9a-267c269beab6)
+
+ Execute the -->setplot command which plot the current vs voltage in SPICE simulator and execute -->plot out vs in command 
+
+ ![alt text](https://github.com/shaikrajeena/Nasscom-Soc-VSD-Repo/assets/163321148/c60097f9-31a4-4ac6-86ba-441859811564)
+
+![alt text](https://github.com/shaikrajeena/Nasscom-Soc-VSD-Repo/assets/163321148/8f02c195-7deb-4f84-929f-59ca629c222e)
+
+![alt text](https://github.com/shaikrajeena/Nasscom-Soc-VSD-Repo/assets/163321148/adfb1698-779e-4b76-8cac-ff94bd5ef199)
+
+![alt text](https://github.com/shaikrajeena/Nasscom-Soc-VSD-Repo/assets/163321148/f4e42755-0ed7-4d0e-a1d9-18c443bee54f)
+
+![alt text](https://github.com/shaikrajeena/Nasscom-Soc-VSD-Repo/assets/163321148/9e401c22-1da1-4172-af14-2fe56733131a)
+
+![alt text](https://github.com/shaikrajeena/Nasscom-Soc-VSD-Repo/assets/163321148/25a44c39-20d4-4ee2-865e-d2fec8dd1e90)
+
+![alt text](https://github.com/shaikrajeena/Nasscom-Soc-VSD-Repo/assets/163321148/33214d6d-d3ad-4642-8411-aeb9438192a3)
+
+
+## _lab steps to git clone_:
+
+1. git clone https://github.com/nickson-jose/vsdstdcelldesign.git
+2. ls -ltr
+3. cd vsdstdcelldesign
+4.  another terminal cd ../../
+5.  cd pdks/sky130a/libs.tech/magic
+6.  ls -ltr
+7.  cp sky130A.tech <path of vsdstdcelldesign>
+8. verify the file in vsdstdcelldesign by doing ls -ltr
+9. execute the command --> magic -T sky130A.tech sky130_inv.mag $
+
+   Then the below figure show how it looks ,
+![alt text](https://github.com/shaikrajeena/Nasscom-Soc-VSD-Repo/assets/163321148/243fd078-645b-4ac7-b191-c02211493891)
+
+
+### 3.2. Inception of layouts and CMOS fabrication process
+
+### _Create Active regions_:
+
+1. _selecting a subtrate_:Most common subtrate p-type silicon subtrate due to its high resistivity ,doping level and orientation
+
+![alt text](https://github.com/shaikrajeena/Nasscom-Soc-VSD-Repo/assets/163321148/d7bda52e-8bfd-4e1b-93d5-16c1e89ab324)
+
+subtrate doping should be less than "well" doping as shown in below figures,
+
+![alt text](https://github.com/shaikrajeena/Nasscom-Soc-VSD-Repo/assets/163321148/467e35ef-c6d9-4d9f-94c4-d8138a319b1d)
+
+### _Create active region for transistors_ Isolation for pockets_:
+Grow sio2 on ptype subtrate deposite a layer of si3n4 then deposite a layer of photoresist mask1 created layouts are nothing but mask.all these are mentioned in the below figures,
+
+![alt text](https://github.com/shaikrajeena/Nasscom-Soc-VSD-Repo/assets/163321148/05064a1f-80a0-47ab-a549-fb1c1bc85117)
+
+![alt text](https://github.com/shaikrajeena/Nasscom-Soc-VSD-Repo/assets/163321148/8898ad7d-2434-4c36-8765-d043dc5a9c9b)
+
+![alt text](https://github.com/shaikrajeena/Nasscom-Soc-VSD-Repo/assets/163321148/8886886d-4a8e-41e7-94c4-21c28658cdf0)
+![alt text](https://github.com/shaikrajeena/Nasscom-Soc-VSD-Repo/assets/163321148/b283621f-3c92-435a-9faf-c49f12870071)
+
+![alt text](https://github.com/shaikrajeena/Nasscom-Soc-VSD-Repo/assets/163321148/f0707e6b-3933-42c9-854c-33caeab84f89)
+
+### _N-well & P-well formation_:
+
+![alt text](https://github.com/shaikrajeena/Nasscom-Soc-VSD-Repo/assets/163321148/56d22036-a519-43af-a062-0c1623ac14a6)
+
+![alt text](https://github.com/shaikrajeena/Nasscom-Soc-VSD-Repo/assets/163321148/62545f15-0a52-496a-be4d-081c9103d15f)
+
+![alt text](https://github.com/shaikrajeena/Nasscom-Soc-VSD-Repo/assets/163321148/93a50b68-ae94-46de-be4c-ac88d2190898)
+
+### _formation of gate terminal and lightly doped drain formation and source drain formation_:
+
+![alt text](https://github.com/shaikrajeena/Nasscom-Soc-VSD-Repo/assets/163321148/e64b6c13-0ada-4c7b-bed2-bab2843bd3d1)
+
+![alt text](https://github.com/shaikrajeena/Nasscom-Soc-VSD-Repo/assets/163321148/ca2a3fba-ce2f-4bfd-b526-27fb9301dbb8)
+
+!alt text](https://github.com/shaikrajeena/Nasscom-Soc-VSD-Repo/assets/163321148/2a8e1e19-7b2e-4220-a8df-d236a3e18606)
+
+!alt text](https://github.com/shaikrajeena/Nasscom-Soc-VSD-Repo/assets/163321148/5d438e1f-3c4a-4be9-a4b6-9ec7ebd766c1)
+
+!alt text](https://github.com/shaikrajeena/Nasscom-Soc-VSD-Repo/assets/163321148/4dd4a241-a54a-4f6f-8531-6990b1c9a3c5)
+
+!alt text](https://github.com/shaikrajeena/Nasscom-Soc-VSD-Repo/assets/163321148/12474229-2767-4b7c-be97-16b8f71d3647)
+
+!alt text](https://github.com/shaikrajeena/Nasscom-Soc-VSD-Repo/assets/163321148/545b0a9d-d2e0-42bf-847d-f19214c6e19b)
+
+!alt text](https://github.com/shaikrajeena/Nasscom-Soc-VSD-Repo/assets/163321148/38f5284e-b4cc-4e59-8192-7a69e332c3b4)
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
 
 
 
