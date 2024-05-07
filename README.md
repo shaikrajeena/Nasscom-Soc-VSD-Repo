@@ -476,6 +476,20 @@ The below figures shows the timing characterization for transition time
 ![alt text](https://github.com/shaikrajeena/Nasscom-Soc-VSD-Repo/assets/163321148/b31414ee-21fe-46cc-9a60-f9ea336b4adc)
 
 
+ # ///////////////////////DAY-3////////////////////: Design Library Cell using Magic Layout and ngspice characterization
+
+ ### 3.1.Labs for CMOS inverter  ngspice simulations:
+
+#### _IO placer revision_:
+Take inverter as an example and go to the results folder and into floorplan folder and open .def file.Befor going to the that step first we need to do the synthesis and fllorplan. Then run the below command ,
+          -->magic -T /work/tools/openplane-working-dir/pdks/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.lef def read picorv30a.floorplan.def &
+
+Then if we want to change the other IO strategies just go to configurations file nad check for the _README.md file and take the parameter we need to change then add that parameter in the _floorplan.tcl_file. Then run the below command by setting that parameter 
+         -->set ::env(FP_IO_MODE) 2
+         -->run_floorplan
+### _SPICE Deck creation for CMOS inverter_:
+
+
 
 
 
