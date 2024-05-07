@@ -597,17 +597,17 @@ Grow sio2 on ptype subtrate deposite a layer of si3n4 then deposite a layer of p
 
 ![alt text](https://github.com/shaikrajeena/Nasscom-Soc-VSD-Repo/assets/163321148/ca2a3fba-ce2f-4bfd-b526-27fb9301dbb8)
 
-!alt text](https://github.com/shaikrajeena/Nasscom-Soc-VSD-Repo/assets/163321148/2a8e1e19-7b2e-4220-a8df-d236a3e18606)
+![alt text](https://github.com/shaikrajeena/Nasscom-Soc-VSD-Repo/assets/163321148/2a8e1e19-7b2e-4220-a8df-d236a3e18606)
 
-!alt text](https://github.com/shaikrajeena/Nasscom-Soc-VSD-Repo/assets/163321148/5d438e1f-3c4a-4be9-a4b6-9ec7ebd766c1)
+![alt text](https://github.com/shaikrajeena/Nasscom-Soc-VSD-Repo/assets/163321148/5d438e1f-3c4a-4be9-a4b6-9ec7ebd766c1)
 
-!alt text](https://github.com/shaikrajeena/Nasscom-Soc-VSD-Repo/assets/163321148/4dd4a241-a54a-4f6f-8531-6990b1c9a3c5)
+![alt text](https://github.com/shaikrajeena/Nasscom-Soc-VSD-Repo/assets/163321148/4dd4a241-a54a-4f6f-8531-6990b1c9a3c5)
 
-!alt text](https://github.com/shaikrajeena/Nasscom-Soc-VSD-Repo/assets/163321148/12474229-2767-4b7c-be97-16b8f71d3647)
+![alt text](https://github.com/shaikrajeena/Nasscom-Soc-VSD-Repo/assets/163321148/12474229-2767-4b7c-be97-16b8f71d3647)
 
-!alt text](https://github.com/shaikrajeena/Nasscom-Soc-VSD-Repo/assets/163321148/545b0a9d-d2e0-42bf-847d-f19214c6e19b)
+![alt text](https://github.com/shaikrajeena/Nasscom-Soc-VSD-Repo/assets/163321148/545b0a9d-d2e0-42bf-847d-f19214c6e19b)
 
-!alt text](https://github.com/shaikrajeena/Nasscom-Soc-VSD-Repo/assets/163321148/38f5284e-b4cc-4e59-8192-7a69e332c3b4)
+![alt text](https://github.com/shaikrajeena/Nasscom-Soc-VSD-Repo/assets/163321148/38f5284e-b4cc-4e59-8192-7a69e332c3b4)
 
 
 
